@@ -11,7 +11,7 @@ refs.search.addEventListener(
   'input',
   debounce(e => {
     apiService.resetPage();
-    if (e.target.value === '') {
+    if (e.target.value.trim() === '') {
       refs.gallery.innerHTML = '';
       return;
     }
@@ -40,15 +40,7 @@ function removeClass(data) {
 }
 
 function autoScroll() {
-  let scrollHeight =
-    Math.max(
-      document.body.scrollHeight,
-      document.documentElement.scrollHeight,
-      document.body.offsetHeight,
-      document.documentElement.offsetHeight,
-      document.body.clientHeight,
-      document.documentElement.clientHeight,
-    ) - document.documentElement.clientHeight;
+  let scrollHeight = Math.max(document.body.scrollHeight);
   setTimeout(() => {
     window.scrollTo({
       top: scrollHeight,
